@@ -1,11 +1,18 @@
 import MealGrid from '../components/meals/meal-grid';
 import classes from './page.module.css';
 import Link from 'next/link';
-import { getMeals } from '@/lib/meals';
+import { getMeals, deleteMeal } from '@/lib/meals';
 import { Suspense } from 'react';
+
+export const metadata = {
+  title: 'All Meals',
+  description: 'Browse the delicious meals shared by our community.',
+};
 
 async function Meals() {
   const meals = await getMeals();
+  
+  console.log(meals);
   return <MealGrid meals = {meals}/>;
 }
 
